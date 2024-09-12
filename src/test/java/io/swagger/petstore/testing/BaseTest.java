@@ -25,9 +25,9 @@ public class BaseTest {
     @AfterAll
     public static void tearDown() {
         Properties envProp = new Properties();
-        envProp.setProperty("github", "https://github.com/egor-zakharov/");
-        envProp.setProperty("email", "zaharov.e.d@ya.ru");
-        envProp.setProperty("telegram", "@EgorZakharov");
+        envProp.setProperty("github", "https://github.com/my-nickname/");
+        envProp.setProperty("email", "myemail@example.com");
+        envProp.setProperty("telegram", "@someuser");
         try (OutputStream out = new FileOutputStream("./build/allure-results/environment.properties")) {
             envProp.store(out, "environment.properties");
         } catch (IOException e) {

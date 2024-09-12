@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 @Epic("Pet store")
 @Feature("Pet")
 @Story("Put")
-@DisplayName("Обновление pet")
+@DisplayName("Updating a pet")
 public class UpdatePetTest extends BaseTest {
 
     private final PetSteps petSteps = new PetSteps();
@@ -24,7 +24,7 @@ public class UpdatePetTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Обновление данных pet")
+    @DisplayName("Updating data for a specific pet")
     public void updateFullDataPet() {
         petSteps.createPetSuccessfully(fullDataPet)
             .putPetSuccessfully(modifiedPet)
@@ -33,14 +33,14 @@ public class UpdatePetTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Создание нового pet методом put")
+    @DisplayName("Creating a new pet with PUT")
     public void putNewPet() {
         petSteps.putPetSuccessfully(fullDataPet).assertPetData(fullDataPet);
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Обработка некорректного тела запроса методом put")
+    @DisplayName("Sending a bad PUT request with incorrect data")
     public void putIncorrectJson() {
         petSteps.putBadRequest(IncorrectData.INCORRECT_JSON);
     }

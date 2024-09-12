@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class PetSteps extends PetController {
 
-    @Step("Успешный post нового pet {pet}")
+    @Step("Posting a new per {pet}")
     public PetSteps createPetSuccessfully(Pet pet) {
         Response response = postPet(pet);
         assertStatusCode(HttpStatus.SC_OK, response);
@@ -26,14 +26,14 @@ public class PetSteps extends PetController {
         return this;
     }
 
-    @Step("Успешный get pet по Id {petId}")
+    @Step("Getting a pet by {petId}")
     public Pet getPetById(String petId) {
         Response response = getPet(petId);
         assertStatusCode(HttpStatus.SC_OK, response);
         return response.as(Pet.class);
     }
 
-    @Step("Pet not found на get pet по id {petId}")
+    @Step("Getting a pet with non-existing id {petId}")
     public PetSteps getNotFoundPetById(String petId) {
         Response response = getPet(petId);
         assertStatusCode(HttpStatus.SC_NOT_FOUND, response);
@@ -41,28 +41,28 @@ public class PetSteps extends PetController {
         return this;
     }
 
-    @Step("Проверка полей pet {expectedPet}")
+    @Step("Checking fields of pet {expectedPet")
     public PetSteps assertPetData(Pet expectedPet) {
         Pet pet = getPetById(expectedPet.getId().toString());
         assertThat(pet, equalTo(expectedPet));
         return this;
     }
 
-    @Step("Успешный delete существующего pet по id {petId}")
+    @Step("Deleting the existing pet by {petId}")
     public PetSteps deletePetById(String petId) {
         Response response = deletePet(petId);
         assertStatusCode(HttpStatus.SC_OK, response);
         return this;
     }
 
-    @Step("Попытка delete несуществующего pet по id {petId}")
+    @Step("Trying to delete a pet by non-existing {petId}")
     public PetSteps deleteNotFoundPetById(String petId) {
         Response response = deletePet(petId);
         assertStatusCode(HttpStatus.SC_NOT_FOUND, response);
         return this;
     }
 
-    @Step("Успешное обновление данных pet {pet}")
+    @Step("Successful update of a Pet")
     public PetSteps putPetSuccessfully(Pet pet) {
         Response response = putPet(pet);
         assertStatusCode(HttpStatus.SC_OK, response);
@@ -70,7 +70,7 @@ public class PetSteps extends PetController {
         return this;
     }
 
-    @Step("Put невалидного объекта {pet}")
+    @Step("Put for invalid {pet} object")
     public PetSteps putBadRequest(Object pet) {
         Response response = putPet(pet);
         assertStatusCode(HttpStatus.SC_BAD_REQUEST, response);

@@ -14,16 +14,15 @@ import org.junit.jupiter.api.Test;
 @Epic("Pet store")
 @Feature("Pet")
 @Story("Delete")
-@DisplayName("Удаление pet")
+@DisplayName("Deleting a pet")
 public class DeletePetTest extends BaseTest {
 
     private final PetSteps petSteps = new PetSteps();
     private final Pet fullDataPet = TestDataGenerator.generateFullDataPet();
-    private final String notFoundId = "-1";
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Удаление pet")
+    @DisplayName("Deleting an existing pet")
     public void deletePet() {
         petSteps.createPetSuccessfully(fullDataPet)
             .deletePetById(fullDataPet.getId().toString())
@@ -32,8 +31,9 @@ public class DeletePetTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Попытка удаления pet по несуществующему Id")
+    @DisplayName("Trying to delete a pet by non-existing ID")
     public void deleteNotFoundPetTest() {
+        String notFoundId = "-1";
         petSteps.deleteNotFoundPetById(notFoundId);
     }
 }

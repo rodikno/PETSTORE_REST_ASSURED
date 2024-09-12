@@ -14,24 +14,24 @@ import org.junit.jupiter.api.Test;
 @Epic("Pet store")
 @Feature("Pet")
 @Story("Get")
-@DisplayName("Получение pet")
+@DisplayName("Getting a Pet")
 public class GetPetTest extends BaseTest {
 
     private final PetSteps petSteps = new PetSteps();
     private final Pet fullDataPet = TestDataGenerator.generateFullDataPet();
-    private final String notFoundId = "-1";
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Получение pet")
+    @DisplayName("GET a Pet")
     public void getPetTest() {
         petSteps.createPetSuccessfully(fullDataPet).assertPetData(fullDataPet);
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Попытка запроса get pet по несуществующему Id")
+    @DisplayName("Getting a pet by non-existing Id")
     public void getNotFoundPetTest() {
+        String notFoundId = "-1";
         petSteps.getNotFoundPetById(notFoundId);
     }
 }
